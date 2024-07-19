@@ -8,14 +8,18 @@ public class Program
         strings.Add("dd");
         strings.Add("ed");
         strings.Add("ads");
-        strings.Add("wd");
+        strings.Add("ads");
         strings.Add("dwq");
+        strings.TrimExcess();
+        strings.Add("ads");
+        strings.Add("wd");
         //strings.Remove("");
-        strings.ForEach(Console.WriteLine);
+
+        Console.WriteLine(strings.Capacity);
+        Console.WriteLine(strings.Count);
+        //strings.ForEach(Console.WriteLine);
         Console.WriteLine("==============================");
 
-        //Console.WriteLine(strings.Capacity);
-        //Console.WriteLine(strings.Count);
 
 
 
@@ -33,10 +37,15 @@ public class Program
 
         //Console.WriteLine(list.RemoveAll(x=> x%2 == 0));
 
-        list.Reverse();
-        //Console.WriteLine(list.Count);
-        Console.WriteLine(list.Capacity);
+        //list.Reverse();
+        list.TrimExcess();
 
+        list.Add(3);
+        list.Add(4);
+        list.Add(4);
+        Console.WriteLine("count:" + list.Count);
+        Console.WriteLine("capacit:"+list.Capacity);
+        
         list.ForEach(Console.WriteLine);
 
         //list.ForEach(x => Console.WriteLine(x + 10));

@@ -2,10 +2,10 @@
 
 namespace CustomList;
 
-public class CustomList<T> : IEnumerable<T>
+public class CustomList<T> : IEnumerable<T>  
 {
     public int Count { get; private set; }
-    public int Capacity { get => Items.Length; private set { } } // ?
+    public int Capacity { get => Items.Length; } // ?
     private T[] Items;
     public CustomList()
     {
@@ -14,7 +14,7 @@ public class CustomList<T> : IEnumerable<T>
     public CustomList(int count)
     {
         Items = new T[count];
-        Capacity = count;
+        Array.Resize(ref Items, count);
     }
 
     public T this[int index]
@@ -24,12 +24,12 @@ public class CustomList<T> : IEnumerable<T>
     }
     public void Add(T item)
     {
-        if(Items.Length == 0)
+        if (Items.Length == 0)
         {
             Array.Resize(ref Items, 4);
             Items[0] = item;
         }
-        else if(Count < Capacity)
+        else if (Count < Capacity)
         {
             Items[Count] = item;
         }
@@ -94,7 +94,7 @@ public class CustomList<T> : IEnumerable<T>
         }
         return filteredList;
     }
- 
+
 
     public IEnumerator<T> GetEnumerator()
     {
@@ -147,5 +147,8 @@ public class CustomList<T> : IEnumerable<T>
             Items[Count - i - 1] = item;
         }
     }
-
+    public void TrimExcess()
+    {
+        Array.Resize(ref Items, Count);
+    }
 }
